@@ -1,11 +1,11 @@
 from currency import Currency
 
-a = Currency("$", "5.00")
-b = Currency("$", "4.50")
+a = Currency("USD", "5.00")
+b = Currency("USD", "4.50")
 f = a
-c = Currency("£", "7")
-d = Currency("$", "1")
-e = Currency("$", "6.00")
+c = Currency("GBP", "7")
+d = Currency("USD", "1")
+e = Currency("USD", "6.00")
 g = 2
 h = 5.0
 
