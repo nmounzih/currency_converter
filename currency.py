@@ -1,11 +1,14 @@
+import re
+
+
 class DifferentCurrencyCodeError(ValueError):
         pass
 
 
 class Currency:
-    def __init__(self, code, amount):
+    def __init__(self, amount, code=""):
         self.code = code
-        self.amount = float(amount)
+        self.amount = re.sub(r'[^$£€B]', "", float(amount))
 
     def __eq__(self, other):
         return self.code == other.code
