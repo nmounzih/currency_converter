@@ -1,4 +1,6 @@
 from currency import Currency
+from currency import Currency, DifferentCurrencyCodeError
+from nose.tools import raises
 
 a = Currency("USD", "5.00")
 b = Currency("USD", "4.50")
@@ -17,18 +19,21 @@ def test_equal():
 
 def test_addition():
     assert a + b == 9.5
-    #assert a + c == "DifferentCurrencyCodeError"
     assert a + d == 6
 
 
 def test_subtraction():
     assert a.sub(b) == 0.50
-    #assert a - c == "DifferentCurrencyCodeError"
     assert e.sub(a) == 1
 
 def test_multiply():
-    assert a*g == 10
-    assert a*h == 25
+    assert a * g == 10.00
+    assert a * h == 25
+
+@raises(DifferentCurrencyCodeError)
+def test_different_currency_code_error():
+    a + c
+    a - c
 
 
 
