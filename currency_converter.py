@@ -19,4 +19,4 @@ class CurrencyConverter:
         elif currency_obj.code == code_to_convert:
             return currency_obj
         else:
-            return (currency_obj.amount * self.dict_rates[currency_obj.code]/self.code)
+            return Currency(currency_obj.amount * self.dict_rates[code_to_convert]/self.dict_rates[currency_obj.code], code_to_convert)
