@@ -8,10 +8,9 @@ class UnknownCurrencyCodeError(ValueError):
 
 
 class CurrencyConverter:
-    def __init__(self, dict_rates, code, amount):
+    def __init__(self, dict_rates):
         self.dict_rates = dict_rates
-        self.code = code
-        self.amount = amount
+        
 
     def convert(self, currency_obj, code_to_convert):
         if currency_obj.code in self.dict_rates and code_to_convert in self.dict_rates:
@@ -24,3 +23,7 @@ class CurrencyConverter:
         #     return currency_obj
         # else:
         #     return Currency(currency_obj.amount * self.dict_rates[code_to_convert]/self.dict_rates[currency_obj.code], code_to_convert)
+
+a = Currency("5.00", "USD")
+b = Currency("4.50", "USD")
+print(a - b)
