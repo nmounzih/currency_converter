@@ -26,7 +26,7 @@ class Currency:
         else:
             raise DifferentCurrencyCodeError("different currencies")
 
-    def sub(self, other):
+    def __sub__(self, other):
         if self.code == other.code:
             return (self.amount - other.amount) or (other.amount - self.amount)
         else:
