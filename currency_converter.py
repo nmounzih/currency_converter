@@ -14,9 +14,13 @@ class CurrencyConverter:
         self.amount = amount
 
     def convert(self, currency_obj, code_to_convert):
-        if code_to_convert not in self.dict_rates:
-            raise UnknownCurrencyCodeError
-        elif currency_obj.code == code_to_convert:
-            return currency_obj
+        if currency_obj.code in self.dict_rates and code_to_convert in self.dict_rates:
+            return Currency(currency_obj.amount * (self.dict_rates[code_to_convert])/self.dict_rates[currency_obj.code], code_to_convert)
         else:
-            return Currency(currency_obj.amount * self.dict_rates[code_to_convert]/self.dict_rates[currency_obj.code], code_to_convert)
+            raise UnknownCurrencyCodeError
+        # if code_to_convert not in self.dict_rates:
+        #     raise UnknownCurrencyCodeError
+        # elif currency_obj.code == code_to_convert:
+        #     return currency_obj
+        # else:
+        #     return Currency(currency_obj.amount * self.dict_rates[code_to_convert]/self.dict_rates[currency_obj.code], code_to_convert)
